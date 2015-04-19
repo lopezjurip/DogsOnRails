@@ -11,6 +11,9 @@
 /test/version_tmp/
 /tmp/
 
+/log/*
+!/log/.keep
+
 ## Specific to RubyMotion:
 .dat*
 .repl_history

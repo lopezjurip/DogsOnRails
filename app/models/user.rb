@@ -12,4 +12,6 @@
 class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: /\A[a-z0-9]+[a-z0-9\._-]*@[a-z0-9\.]+\.[a-z]{2,5}\z/i
+
+  has_many :dogs
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dogs
   resources :breeds
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

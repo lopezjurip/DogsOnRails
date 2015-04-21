@@ -12,6 +12,8 @@
 #
 
 class Dog < ActiveRecord::Base
+  include Likeable
+
   validates :name, :user_id, :male, presence: true
 
   belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'

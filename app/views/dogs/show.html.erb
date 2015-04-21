@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @dog.user %>
+  <%= link_to @dog.owner.name, dog_path(@dog) %>
 </p>
 
 <p>
@@ -21,4 +21,4 @@
 </p>
 
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+<%= link_to 'Back', user_dogs_path(@dog.owner) %>

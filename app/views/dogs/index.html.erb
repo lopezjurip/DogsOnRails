@@ -18,7 +18,7 @@
       <tr>
         <td><%= dog.name %></td>
         <td><%= dog.male %></td>
-        <td><%= dog.user %></td>
+        <td><%= link_to dog.owner.name, dog_path(dog) %></td>
         <td><%= dog.born_at %></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Dog', new_dog_path %>
+<%= link_to 'New Dog', new_user_dog_path(@user) %>

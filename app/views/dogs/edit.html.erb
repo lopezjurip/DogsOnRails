@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @dog %> |
-<%= link_to 'Back', dogs_path %>
+<%= link_to 'Back', user_dogs_path(@dog.owner) %>

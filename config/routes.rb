@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :users do
+    # See: http://guides.rubyonrails.org/routing.html#nested-resources
+    resources :dogs, shallow: true
+  end
+
   resources :veterinaries
-  resources :dogs
   resources :breeds
-  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

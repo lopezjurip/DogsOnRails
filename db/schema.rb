@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421014655) do
+ActiveRecord::Schema.define(version: 20150421020523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,28 @@ ActiveRecord::Schema.define(version: 20150421014655) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "veterinaries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "veterinary_attendances", force: :cascade do |t|
+    t.integer  "dog_id"
+    t.integer  "veterinary_id"
+    t.boolean  "healthy",       default: true
+    t.text     "notes",         default: ""
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "veterinary_attendances", ["dog_id"], name: "index_veterinary_attendances_on_dog_id", using: :btree
+  add_index "veterinary_attendances", ["veterinary_id"], name: "index_veterinary_attendances_on_veterinary_id", using: :btree
+
   add_foreign_key "dogs", "users"
   add_foreign_key "likes", "users"
+  add_foreign_key "veterinary_attendances", "dogs"
+  add_foreign_key "veterinary_attendances", "veterinaries"
 end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Veterinaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @veterinaries.each do |veterinary| %>
+      <tr>
+        <td><%= veterinary.name %></td>
+        <td><%= veterinary.address %></td>
+        <td><%= veterinary.phone %></td>
+        <td><%= link_to 'Show', veterinary %></td>
+        <td><%= link_to 'Edit', edit_veterinary_path(veterinary) %></td>
+        <td><%= link_to 'Destroy', veterinary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Veterinary', new_veterinary_path %>

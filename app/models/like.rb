@@ -13,17 +13,6 @@
 class Like < ActiveRecord::Base
   validates :user_id, :likeable_id, :likeable_type, presence: true
 
-  before_create  :increment_counter
-  before_destroy :decrement_counter
-
-  def increment_counter
-    likeable.increment!(:likes_count)
-  end
-
-  def decrement_counter
-    likeable.decrement!(:likes_count)
-  end
-
   belongs_to :user
   belongs_to :likeable, polymorphic: true, counter_cache: true
 

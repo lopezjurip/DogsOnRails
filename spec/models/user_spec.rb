@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  def valid_user
+    User.new(name: 'Patricio', email: 'patricio@email.com')
+  end
+
   describe 'creates user entry' do
     context 'invalid email address' do
       it 'empty email field' do
@@ -22,9 +26,31 @@ RSpec.describe User, type: :model do
 
     context 'enters valid parameters' do
       it 'allow valid email' do
-        user = User.new(name: 'Patricio', email: 'patricio@email.com')
+        user = valid_user
         expect(user).to be_valid
       end
+    end
+  end
+
+  describe 'destroy dependent relationships' do
+    before do
+      @user = valid_user
+      @user.save!
+      Dog.create!(name: 'Rex', owner: @user)
+      dog = Dog.create!(name: 'Leila', owner: @user)
+      dog.add_like_by(@user)
+    end
+
+    it 'destroy dependent dogs' do
+      expect(@user.dogs).not_to be_empty
+      @user.destroy!
+      expect(@user.dogs).to be_empty
+    end
+
+    it 'destroy dependent likes' do
+      expect(@user.likes).not_to be_empty
+      @user.destroy!
+      expect(@user.likes).to be_empty
     end
   end
 end

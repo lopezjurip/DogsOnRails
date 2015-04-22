@@ -11,6 +11,8 @@
 #
 
 class Veterinary < ActiveRecord::Base
+  include Likeable
+
   validates :name, presence: true
 
   has_many :veterinary_attendances

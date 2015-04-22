@@ -10,8 +10,6 @@
 #
 
 class User < ActiveRecord::Base
-  include Likeable
-
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: /\A[a-z0-9]+[a-z0-9\._-]*@[a-z0-9\.]+\.[a-z]{2,5}\z/i
 

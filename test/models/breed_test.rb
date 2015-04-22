@@ -7,6 +7,7 @@
 #  description :text             default("")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  likes_count :integer          default(0)
 #
 
 require 'test_helper'

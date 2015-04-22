@@ -2,13 +2,14 @@
 #
 # Table name: dogs
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  male       :boolean          default(TRUE), not null
-#  user_id    :integer
-#  born_at    :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string           not null
+#  male        :boolean          default(TRUE), not null
+#  user_id     :integer
+#  born_at     :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  likes_count :integer          default(0)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

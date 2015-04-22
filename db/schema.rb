@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421020523) do
+ActiveRecord::Schema.define(version: 20150422010044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150421020523) do
     t.text     "description", default: ""
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "likes_count", default: 0
   end
 
   create_table "breeds_dogs", id: false, force: :cascade do |t|
@@ -32,12 +33,13 @@ ActiveRecord::Schema.define(version: 20150421020523) do
   add_index "breeds_dogs", ["dog_id"], name: "index_breeds_dogs_on_dog_id", using: :btree
 
   create_table "dogs", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.boolean  "male",       default: true, null: false
+    t.string   "name",                       null: false
+    t.boolean  "male",        default: true, null: false
     t.integer  "user_id"
     t.date     "born_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "likes_count", default: 0
   end
 
   add_index "dogs", ["user_id"], name: "index_dogs_on_user_id", using: :btree
@@ -66,8 +68,9 @@ ActiveRecord::Schema.define(version: 20150421020523) do
     t.string   "name"
     t.string   "address"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "likes_count", default: 0
   end
 
   create_table "veterinary_attendances", force: :cascade do |t|

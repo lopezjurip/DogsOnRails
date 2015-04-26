@@ -23,6 +23,15 @@
     <%= f.label :born_at %><br>
     <%= f.date_select :born_at %>
   </div>
+  <div class="field">
+    <p>Select breeds: </p>
+    <% for breed in Breed.all %>
+        <div>
+          <%= check_box_tag "dog[breed_ids][]", breed.id, @dog.breeds.include?(breed) %>
+          <%= breed.breed %>
+        </div>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

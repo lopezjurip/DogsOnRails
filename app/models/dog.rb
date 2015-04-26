@@ -22,4 +22,8 @@ class Dog < ActiveRecord::Base
   has_and_belongs_to_many :breeds
   has_many :veterinary_attendances
   has_many :veterinaries, through: :veterinary_attendances
+
+  def gender
+    self.male ? 'Male' : 'Female'
+  end
 end

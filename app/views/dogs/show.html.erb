@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Male:</strong>
-  <%= @dog.male %>
+  <strong>Gender:</strong>
+  <%= @dog.gender%>
 </p>
 
 <p>
@@ -20,5 +20,14 @@
   <%= @dog.born_at %>
 </p>
 
+<p>
+  <strong>Breeds:</strong>
+  <ul>
+  <% @dog.breeds.each do |breed| %>
+      <li><%= link_to breed.breed, breed_path(breed) %></li>
+  <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', user_dogs_path(@dog.owner) %>
+<%= link_to 'More dogs from this user', user_dogs_path(@dog.owner) %>

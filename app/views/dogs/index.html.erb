@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Dogs</h1>
+<h1>Listing <%= @user.name %>'s dogs</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Male</th>
-      <th>User</th>
+      <th>Gender</th>
       <th>Born at</th>
       <th colspan="3"></th>
     </tr>
@@ -17,8 +16,7 @@
     <% @dogs.each do |dog| %>
       <tr>
         <td><%= dog.name %></td>
-        <td><%= dog.male %></td>
-        <td><%= link_to dog.owner.name, dog_path(dog) %></td>
+        <td><%= dog.gender %></td>
         <td><%= dog.born_at %></td>
         <td><%= link_to 'Show', dog %></td>
         <td><%= link_to 'Edit', edit_dog_path(dog) %></td>

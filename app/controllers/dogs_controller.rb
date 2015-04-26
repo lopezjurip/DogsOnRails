@@ -5,11 +5,7 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
-    if @user.present?
-      @dogs = @user.dogs
-    else
-      @dogs = Dog.all
-    end
+    @dogs = @user.dogs
   end
 
   # GET /dogs/1
@@ -19,8 +15,7 @@ class DogsController < ApplicationController
 
   # GET /dogs/new
   def new
-    @dog = Dog.new
-    @dog.owner = @user if @user.present?
+    @dog = Dog.new(owner: @user)
   end
 
   # GET /dogs/1/edit
@@ -31,7 +26,7 @@ class DogsController < ApplicationController
   # POST /dogs.json
   def create
     @dog = Dog.new(dog_params)
-    @dog.owner = @user if @user.present?
+    @dog.owner = @user
 
     respond_to do |format|
       if @dog.save
@@ -75,13 +70,11 @@ class DogsController < ApplicationController
     end
 
     def set_user
-      if params[:user_id]
-        @user = User.find_by_id(params[:user_id])
-      end
+      @user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dog_params
-      params.require(:dog).permit(:name, :male, :user_id, :born_at)
+      params.require(:dog).permit(:name, :male, :born_at)
     end
 end

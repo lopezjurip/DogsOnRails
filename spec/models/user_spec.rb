@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
     context 'invalid email address' do
       it 'empty email field' do
         user = User.new(name: 'Patricio')
-        expect(user).to be_invalid
+        expect(user).to be_valid
       end
 
       it 'email address does not match REGEX' do
@@ -54,4 +54,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
